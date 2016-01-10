@@ -1,0 +1,21 @@
+CREATE TABLE `parking` (
+  `parking_vendor_id` int(11) NOT NULL,
+  `parking_id` int(11) NOT NULL,
+  `parking_name` varchar(45) NOT NULL,
+  `parking_location_id` int(11) NOT NULL,
+  `parking_tariff_id` int(11) NOT NULL,
+  `parking_slots` int(11) NOT NULL DEFAULT '0' COMMENT 'Contains the max number of parking slots that are available based on optimum parking calculations.',
+  `parking_time_from` datetime DEFAULT NULL,
+  `parking_time_to` datetime DEFAULT NULL,
+  `parking_workdays_id` int(11) NOT NULL DEFAULT '0' COMMENT 'Boolean True/False value - (0/1). Defaults to 0. 0 - Workdays Data unavailable.',
+  `parking_managed_status` int(11) NOT NULL DEFAULT '0' COMMENT 'Boolean True/False value - (0/1). Defaults to 0. 0 - Parking is not managed, 1 - Managed parking.',
+  PRIMARY KEY (`parking_id`),
+  KEY `vendor_id_FK_idx` (`parking_vendor_id`),
+  KEY `parking_location_id_FK_idx` (`parking_location_id`),
+  KEY `parking_tariff_id_idx` (`parking_tariff_id`),
+  KEY `parking_workdays_id_FK_idx` (`parking_workdays_id`),
+  CONSTRAINT `parking_location_id_FK` FOREIGN KEY (`parking_location_id`) REFERENCES `location` (`location_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `parking_tariff_id_FK` FOREIGN KEY (`parking_tariff_id`) REFERENCES `tariff` (`tariff_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `parking_vendor_id_FK` FOREIGN KEY (`parking_vendor_id`) REFERENCES `vendor` (`vendor_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `parking_workdays_id_FK` FOREIGN KEY (`parking_workdays_id`) REFERENCES `workdays` (`workdays_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Contains the list of parkings listed on the app';

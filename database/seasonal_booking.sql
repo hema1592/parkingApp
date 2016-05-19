@@ -14,6 +14,6 @@ CREATE TABLE `seasonal_booking` (
   KEY `payment_method_id_FK_idx` (`seasonal_booking_payment_method_id`),
   CONSTRAINT `seasonal_booking_parking_id_FK` FOREIGN KEY (`seasonal_booking_parking_id`) REFERENCES `parking` (`parking_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `seasonal_booking_payment_method_id_FK` FOREIGN KEY (`seasonal_booking_payment_method_id`) REFERENCES `payment_method` (`payment_method_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `seasonal_booking_user_car_id_FK` FOREIGN KEY (`seasonal_booking_user_car_id`) REFERENCES `user_car_details` (`car_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `seasonal_booking_user_car_id_FK` FOREIGN KEY (`seasonal_booking_user_car_id`) REFERENCES `uservehicle` (`uservehicle_car_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `seasonal_booking_vendor_id_FK` FOREIGN KEY (`seasonal_booking_vendor_id`) REFERENCES `vendor` (`vendor_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

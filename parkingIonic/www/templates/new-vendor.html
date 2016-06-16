@@ -1,0 +1,30 @@
+<ion-view view-title="New Agency?" name="NewVendorView">
+    <ion-content ng-controller="AddVendorCtrl">
+        <form class="list" ng-app="" ng-init="checkTermsAgreement=false">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Agency Name</span>
+                <input type="text" placeholder="Agency Name" ng-required="required">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Owner Name</span>
+                <input type="text" placeholder="Owner Name" ng-required="required">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Address</span>
+                <input type="text" placeholder="Address" ng-required="required">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Email</span>
+                <input type="email" placeholder="Email" ng-required="required">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Mobile</span>                
+                <input type="text" placeholder="10 Digit Mobile Number" ng-minlength="10" ng-maxlength="10" ng-required="required">
+            </label>    
+            <ion-checkbox ng-model="checkTermsAgreement">I agree to the privacy policy and terms of parkingApp</ion-checkbox>        
+            <div class="padding">          
+                <button type="submit" ng-disabled="!checkTermsAgreement" class="button button-block button-positive">Submit</button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

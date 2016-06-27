@@ -1,0 +1,25 @@
+<ion-view view-title="New User?" name="NewUserView">
+    <ion-content ng-controller="AddUserCtrl">
+        <form class="list">
+            <label class="item item-input item-floating-label">
+                <span class="input-label">First Name</span>
+                <input type="text" placeholder="First Name" ng-required="required">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Last Name</span>
+                <input type="text" placeholder="Last Name" ng-required="required">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Email</span>
+                <input type="email" placeholder="Email" ng-required="required">
+            </label>
+            <label class="item item-input item-floating-label">
+                <span class="input-label">Mobile</span>                
+                <input type="text" placeholder="10 Digit Mobile Number" ng-minlength="10" ng-maxlength="10" ng-required="required">
+            </label>            
+            <div class="padding">          
+                <button type="submit" class="button button-block button-positive">Create Account</button>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

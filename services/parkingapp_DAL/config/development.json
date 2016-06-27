@@ -1,0 +1,7 @@
+//DEV CONFIGURATION
+{
+	"debug": true,
+    "multipleStatements": true,
+    "url": "192.168.10.5",
+    "port": "7337"
+}

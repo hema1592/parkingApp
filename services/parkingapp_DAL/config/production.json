@@ -1,0 +1,7 @@
+//PRODUCTION CONFIGURATION
+{
+	"debug": false,
+    "multipleStatements": true,
+    "url": "54.169.36.209",
+    "port": "7887"
+}

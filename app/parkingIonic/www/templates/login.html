@@ -1,0 +1,62 @@
+<ion-view view-title="Login / Sign Up?" name="LoginView">
+    <ion-content ng-controller="LoginCtrl" ng-init="option = 0">
+        <label class="bar bar-balanced col padding item item-stacked-label">
+            <h4 class="title">What would you like to do today?</h4>
+        </label>     
+        <form class="list">            
+            <label class="row">
+                <label class="col-50">
+                    <label class="button button-block button-positive" ng-click="option = 1">Login</label>
+                </label>               
+                <label class="col-50">
+                    <label class="button button-block button-energized" ng-click="option = 2">Sign Up</label>
+                </label>
+            </label>            
+            <div ng-show="option == 1">
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Email / Mobile</span>
+                    <input type="text" placeholder="Email / Mobile" ng-required="required">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Password</span>
+                    <input type="text" placeholder="Password" ng-required="required">
+                </label>          
+                <div class="padding">          
+                    <button type="submit" class="button button-block button-positive">Login!</button>
+                </div>
+            </div>
+            <div ng-show="option == 2">
+                <!--<label class="item item-input item-floating-label">
+                    <span class="input-label">Sample Username</span>
+                    <input type="text" placeholder="Sample Username" ng-required="required">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Sample Password</span>
+                    <input type="text" placeholder="Password" ng-required="required">
+                </label>          
+                <div class="padding">          
+                    <button type="submit" class="button button-block button-energized">Sign Up!</button>
+                </div>-->
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">First Name</span>
+                    <input type="text" placeholder="First Name" ng-required="required">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Last Name</span>
+                    <input type="text" placeholder="Last Name" ng-required="required">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Email</span>
+                    <input type="email" placeholder="Email" ng-required="required">
+                </label>
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Mobile</span>                
+                    <input type="text" placeholder="10 Digit Mobile Number" ng-minlength="10" ng-maxlength="10" ng-required="required">
+                </label>            
+                <div class="padding">          
+                    <button type="submit" class="button button-block button-energized">Sign Up</button>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

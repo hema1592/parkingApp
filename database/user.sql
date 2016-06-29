@@ -9,3 +9,6 @@ CREATE TABLE `user` (
   `user_is_vendor` int(11) NOT NULL,
   PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Contains user details';
+
+ALTER TABLE `parkingapp`.`user` 
+CHANGE COLUMN `user_is_vendor` `user_type_id` INT(11) NOT NULL ;

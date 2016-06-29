@@ -12,3 +12,10 @@ CREATE TABLE `user` (
 
 ALTER TABLE `parkingapp`.`user` 
 CHANGE COLUMN `user_is_vendor` `user_type_id` INT(11) NOT NULL ;
+
+ALTER TABLE `parkingapp`.`user` 
+ADD CONSTRAINT `user_type_id_FK`
+  FOREIGN KEY (`user_type_id`)
+  REFERENCES `parkingapp`.`user_type` (`user_type_id`)
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION;

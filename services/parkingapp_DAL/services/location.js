@@ -1,13 +1,13 @@
-var loginRepo = require('../data/login');
+var locationRepo = require('../data/location');
 
-exports.getLoginVerified = function (req, res) {
-    console.log("Login Service Contacted...");  
+exports.addLocation = function (req, res) {
+    console.log("Location Service Contacted...");  
     try {
-        if(!req.params.user_id || !req.params.user_pass) {
+        if(!req.params.loc_address || !req.params.loc_area || !req.params.loc_landmark || !req.params.loc_city) {
             return res.status(400).end();
         }   
-        console.log("Service Request User Id : " + req.params.user_id + " Password : " + req.params.user_pass);
-        loginRepo.getLoginVerified(req, function (err, result) {            
+        console.log("Service Request Location Address : " + req.params.loc_address + " Area : " + req.params.loc_area + " Landmark : " + req.params.loc_landmark + " City : " + req.params.loc_city);
+        locationRepo.addLocation(req, function (err, result) {            
             if(err) {
                 console.log("Error: 500, returned " + err);
                 return res.status(500).end();                
@@ -27,6 +27,6 @@ exports.getLoginVerified = function (req, res) {
         return res.status(500).end();
     }
     finally {    
-        console.log("login Over and out..");
+        console.log("location Over and out..");
     }
 };

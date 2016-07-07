@@ -1,13 +1,13 @@
-var loginRepo = require('../data/login');
+var paymentMethodRepo = require('../data/paymentMethod');
 
-exports.getLoginVerified = function (req, res) {
-    console.log("Login Service Contacted...");  
+exports.addPaymentMethodDetails = function (req, res) {
+    console.log("Payment Method Service Contacted...");  
     try {
-        if(!req.params.user_id || !req.params.user_pass) {
+        if(typeof req.params.method_desc == 'undefined' || typeof req.params.method_redirect_url == 'undefined') {
             return res.status(400).end();
         }   
-        console.log("Service Request User Id : " + req.params.user_id + " Password : " + req.params.user_pass);
-        loginRepo.getLoginVerified(req, function (err, result) {            
+        console.log("Service Request Payment Method Description : " + req.params.method_desc + " Redirect URL : " + req.params.method_redirect_url);
+        paymentMethodRepo.AddPaymentMethodDetails(req, function (err, result) {            
             if(err) {
                 console.log("Error: 500, returned " + err);
                 return res.status(500).end();                
@@ -27,6 +27,6 @@ exports.getLoginVerified = function (req, res) {
         return res.status(500).end();
     }
     finally {    
-        console.log("login Over and out..");
+        console.log("payment method Over and out..");
     }
 };

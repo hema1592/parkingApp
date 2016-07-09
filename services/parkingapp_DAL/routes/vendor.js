@@ -1,6 +1,6 @@
 var router = require('express').Router(),
     service = require('../services/vendor');
 
-router.get('/:user_id/:user_pass', service.getLoginVerified);
+router.get('/:userid/:ownername/:owneraddress/:ownerlocationid', service.addVendorDetails);
 
 module.exports = router;

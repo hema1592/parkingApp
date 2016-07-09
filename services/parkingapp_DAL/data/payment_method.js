@@ -1,7 +1,7 @@
 var mysql   = require('mysql'),
     pool = require('./_mysql-client');
 
-exports.getWorkdaysById = function(req, res) {  
+exports.addPaymentMethodDetails = function(req, res) {  
     pool.getConnection(function(err, connection){
         if (err) {
           connection.release();
@@ -10,11 +10,9 @@ exports.getWorkdaysById = function(req, res) {
         }   
         console.log('Connected as Thread Id: ' + connection.threadId);
 
-        console.log('Attempting to get Workdays By Id : ' +  req.params.workdaysid);
+        console.log('Attempting to add payment method : ' + req.params.method_desc + " " + req.params.method_redirect_url);
 
-        console.log("CALL spGetWorkdaysById(" + connection.escape(req.params.workdaysid) + ");");
-
-        connection.query("CALL spGetWorkdaysById(" + connection.escape(req.params.workdaysid) + ");", function(err, rows){          
+        connection.query("CALL spAdminAddPaymentMethodDetails(" + connection.escape(req.params.method_desc) + "," + connection.escape(req.params.method_redirect_url) + ");", function(err, rows){          
             connection.release();            
             if(!err) {                                
                 var response = JSON.stringify(rows[0]); 

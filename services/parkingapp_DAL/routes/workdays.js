@@ -1,6 +1,6 @@
 var router = require('express').Router(),
     service = require('../services/workdays');
 
-router.get('/:user_id/:user_pass', service.getLoginVerified);
+router.get('/:workdaysid', service.getWorkdaysById);
 
 module.exports = router;

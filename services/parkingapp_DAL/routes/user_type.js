@@ -1,6 +1,6 @@
 var router = require('express').Router(),
     service = require('../services/user_type');
 
-router.get('/:user_id/:user_pass', service.getLoginVerified);
+router.get('/:newusertype', service.addUserType);
 
 module.exports = router;

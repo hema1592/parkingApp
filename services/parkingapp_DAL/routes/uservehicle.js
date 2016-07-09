@@ -1,6 +1,6 @@
 var router = require('express').Router(),
     service = require('../services/uservehicle');
 
-router.get('/:user_id/:user_pass', service.getLoginVerified);
+router.get('/:userid/:vehicledimensionid/:regnum', service.addUserVehicleDetails);
 
 module.exports = router;

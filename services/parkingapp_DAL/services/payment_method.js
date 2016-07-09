@@ -1,14 +1,13 @@
-var workdaysRepo = require('../data/workdays');
+var paymentMethodRepo = require('../data/payment_method');
 
-exports.getWorkdaysById = function (req, res) {
-    console.log("Workdays Service Contacted...");  
+exports.addPaymentMethodDetails = function (req, res) {
+    console.log("Payment Method Service Contacted...");  
     try {
-        if(typeof req.params.workdaysid == 'undefined') {
+        if(typeof req.params.method_desc == 'undefined' || typeof req.params.method_redirect_url == 'undefined') {
             return res.status(400).end();
         }   
-        console.log("Service Request Vehicle Type : " + req.params.workdaysid);
-
-        workdaysRepo.getWorkdaysById(req, function (err, result) {            
+        console.log("Service Request Payment Method Description : " + req.params.method_desc + " Redirect URL : " + req.params.method_redirect_url);
+        paymentMethodRepo.addPaymentMethodDetails(req, function (err, result) {            
             if(err) {
                 console.log("Error: 500, returned " + err);
                 return res.status(500).end();                
@@ -28,6 +27,6 @@ exports.getWorkdaysById = function (req, res) {
         return res.status(500).end();
     }
     finally {    
-        console.log("workdays Over and out..");
+        console.log("payment method Over and out..");
     }
 };

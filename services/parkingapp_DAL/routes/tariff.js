@@ -1,6 +1,6 @@
 var router = require('express').Router(),
     service = require('../services/tariff');
 
-router.get('/:user_id/:user_pass', service.getLoginVerified);
+router.get('/:locationid/:vehicletypeid/:tariffamount', service.addTariffDetails);
 
 module.exports = router;

@@ -11,7 +11,7 @@ var router = express.Router();
 router.use('/location', routes.location);
 router.use('/login', routes.login);
 router.use('/parking', routes.parking);
-router.use('/paymentMethod', routes.payment_method);
+router.use('/payment_method', routes.payment_method);
 router.use('/seasonal_booking', routes.seasonal_booking);
 router.use('/tariff', routes.tariff);
 router.use('/user_type', routes.user_type);

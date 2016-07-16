@@ -1,7 +1,21 @@
 <ion-view view-title="Home" name="HomeView">
+    <style>
+        .scroll {
+            height: 100%;
+        }
+        
+        #map {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
     <ion-content ng-controller="HomeCtrl" ng-init="">
         <label class="bar bar-balanced col padding item item-stacked-label">
             <h4 class="title">Home</h4>
-        </label>     
+        </label>    
+        <div class="padding">          
+            <a href="http://192.168.10.5:7337/users/1"><button type="submit" class="button button-block button-energized">Demo API CALL</button></a>
+        </div> 
+        <div id="map" data-tap-disabled="true"></div>
     </ion-content>
 </ion-view>

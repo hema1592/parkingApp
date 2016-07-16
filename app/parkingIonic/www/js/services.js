@@ -1,4 +1,67 @@
 angular.module('starter.services', [])
+/*.service('service', function($http, $rootScope) {
+  var urls = {
+    addLocation : /location/:loc_address/:loc_area/:loc_landmark/:loc_city,
+    deleteLocation : /location/:locationid/:uid/:upass,
+    updateLocation : /location/:locationid/:loc_address/:loc_area/:loc_landmark/:loc_city,
+    getLocationById : /location/:locationid,
+
+    getLoginVerified : /login/:user_id/:user_pass,
+
+    addParkingLotDetails : /parking/:parking_name/:parking_vendor_id/:parking_loc_id/:parking_tariff_id/:parking_slots/:parking_from_time/:parking_to_time/:parking_workdays_id/:parking_managed_status,
+    deleteParkingLotDetails : /parking/:parkingid/:uid/:upass,
+    updateParkingLotDetails : /parking/:parkingid/:vendorid/:parkingname/:locationid/:tariffid/:totalslots/:fromtime/:totime/:workdaysid/:managedstatus,
+    getParkingLotDetailsById : /parking/:parkingid,
+
+    addPaymentMethodDetails : /payment_method/:method_desc/:method_redirect_url,
+    deletePaymentMethodDetails : /payment_method/:method_id/:uid/:upass,
+    updatePaymentMethodDetails : /payment_method/:paymentmethodid/:methodname/:methodurl,
+
+    addSeasonalBookingDetails : /seasonal_booking/:sp_parkingid/:sp_vendorid/:sp_carid/:sp_bookingfrom/:sp_bookingto/:sp_workdaysid/:sp_paymentmethodid/:sp_paymentstatus,
+    deleteSeasonalBookingDetails : /seasonal_booking/:bookingid/:uid/:upass,
+    updateSeasonalBookingDetails : /seasonal_booking/:bookingid/:parkingid/:vendorid/:usercarid/:fromtime/:totime/:workdaysid/:paymentmethodid/:paymentstatus,
+
+    addTariffDetails : /tariff/:locationid/:vehicletypeid/:tariffamount,
+    deleteTariffDetails : /tariff/:tariffid/:uid/:upass,
+    updateTariffDetails : /tariff/:tariffid/:locationid/:vehicletypeid/:tariffamount,
+    getTariffDetailsById : /tariff/:tariffid,
+
+    addUserType : /user_type/:newusertype,
+    deleteUserType : /user_type/:usertypeid/:uid/:upass,
+    updateUserType : /user_type/:usertypeid/:newusertype,
+
+    getUserDetails : /users/all,
+    getUserDetailsById : /users/:id,
+    addUserDetails : /users/:username/:phoneno/:firstname/:lastname/:email/:userpass/:usertype,
+    deleteUserDetails : /users/:userid/:uid/:upass,
+    updateUserDetails : /users/:userid/:username/:phoneno/:firstname/:lastname/:email/:userpass/:usertype,
+    getUserDetailsByUserType : /users/type/:usertype,
+
+    addUserVehicleDetails : /uservehicle/:userid/:vehicledimensionid/:regnum,
+    deleteUserVehicleDetails : /uservehicle/:userid/:uid/:upass,
+    updateUserVehicleDetails : /uservehicle/:uservehicleid/:userid/:carid/:vehicledimensionid/:regnum,
+    getUserVehicleDetailsById : /uservehicle/:uservehicleid,
+
+    getListAllVehiclesByVehicleType : /vehicle/types/:vehicletypeid,
+    getVehicleDescByVehicleMake : /vehicle/make/:vehiclemake,
+    getVehicleDetailsById : /vehicle/:vehicleid,
+    getVehicleMakeByVehicleType : /vehicle/type/:vehicletype,
+    getVehiclesByVehicleType : /vehicle/all/:vehicletypeid,
+
+    addVehicleType : /vehicle_type/:newvehicletype,
+    deleteVehicleType : /vehicle_type/:vehicletypeid/:uid/:upass,
+    updateVehicleType : /vehicle_type/:vehicletypeid/:newvehicletype,
+    getListAllVehicleTypes : /vehicle_type/all,
+    getVehicleTypeById : /vehicle_type/:id,
+
+    addVendorDetails : /vendor/:userid/:ownername/:owneraddress/:ownerlocationid,
+    deleteVendorDetails : /vendor/:vendorid/:uid/:upass,
+    updateVendorDetails : /vendor/:vendorid/:userid/:ownername/:owneraddress/:ownerlocationid,
+    getVendorDetailsById : /vendor/:vendorid,
+
+    getWorkdaysById : /workdays/:workdaysid
+  }
+})*/
 
 /*.factory('Chats', function() {
   // Might use a resource here that returns a JSON array
@@ -81,50 +144,75 @@ angular.module('starter.services', [])
   // Some fake testing data
   var hours = [{
     id: 0,
+    name: '00'
+  }, {
+    id: 1,
     name: '01'
-  }, {    id: 1,
+  }, {    
+    id: 2,
     name: '02'
-  }, {    id: 2,
+  }, {    
+    id: 3,
     name: '03'
-  }, {    id: 3,
+  }, {    
+    id: 4,
     name: '04'
-  }, {    id: 4,
+  }, {    
+    id: 5,
     name: '05'
-  }, {    id: 5,
+  }, {    
+    id: 6,
     name: '06'
-  }, {    id: 6,
+  }, {    
+    id: 7,
     name: '07'
-  }, {    id: 7,
+  }, {    
+    id: 8,
     name: '08'
-  }, {    id: 8,
+  }, {    
+    id: 9,
     name: '09'
-  }, {    id: 9,
+  }, {    
+    id: 10,
     name: '10'
-  }, {    id: 10,
+  }, {    
+    id: 11,
     name: '11'
-  }, {    id: 11,
+  }, {    
+    id: 12,
     name: '12'
-  }, {    id: 12,
+  }, {    
+    id: 13,
     name: '13'
-  }, {    id: 13,
+  }, {    
+    id: 14,
     name: '14'
-  }, {    id: 14,
+  }, {    
+    id: 15,
     name: '15'
-  }, {    id: 15,
+  }, {    
+    id: 16,
     name: '16'
-  }, {    id: 16,
+  }, {    
+    id: 17,
     name: '17'
-  }, {    id: 17,
+  }, {    
+    id: 18,
     name: '18'
-  }, {    id: 18,
+  }, {    
+    id: 19,
     name: '19'
-  }, {    id: 19,
+  }, {    
+    id: 20,
     name: '20'
-  }, {    id: 20,
+  }, {    
+    id: 21,
     name: '21'
-  }, {    id: 21,
+  }, {    
+    id: 22,
     name: '22' 
-  }, {    id: 22,
+  }, {    
+    id: 23,
     name: '23' 
   }]; 
 

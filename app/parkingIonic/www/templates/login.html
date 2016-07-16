@@ -15,43 +15,40 @@
             <div ng-show="option == 1">
                 <label class="item item-input item-floating-label">
                     <span class="input-label">Email / Mobile</span>
-                    <input type="text" placeholder="Email / Mobile" ng-required="required">
+                    <input type="text" placeholder="Email / Mobile" ng-required="required" ng-model="input">
                 </label>
                 <label class="item item-input item-floating-label">
                     <span class="input-label">Password</span>
-                    <input type="text" placeholder="Password" ng-required="required">
+                    <input type="password" placeholder="Password" ng-required="required" ng-model="passkey">
                 </label>          
                 <div class="padding">          
                     <button type="submit" class="button button-block button-positive">Login!</button>
                 </div>
             </div>
             <div ng-show="option == 2">
-                <!--<label class="item item-input item-floating-label">
-                    <span class="input-label">Sample Username</span>
-                    <input type="text" placeholder="Sample Username" ng-required="required">
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Username</span>
+                    <input type="text" placeholder="Username" ng-required="required" ng-model="username">
                 </label>
                 <label class="item item-input item-floating-label">
-                    <span class="input-label">Sample Password</span>
-                    <input type="text" placeholder="Password" ng-required="required">
-                </label>          
-                <div class="padding">          
-                    <button type="submit" class="button button-block button-energized">Sign Up!</button>
-                </div>-->
-                <label class="item item-input item-floating-label">
                     <span class="input-label">First Name</span>
-                    <input type="text" placeholder="First Name" ng-required="required">
+                    <input type="text" placeholder="First Name" ng-required="required" ng-model="firstname">
                 </label>
                 <label class="item item-input item-floating-label">
                     <span class="input-label">Last Name</span>
-                    <input type="text" placeholder="Last Name" ng-required="required">
+                    <input type="text" placeholder="Last Name" ng-required="required" ng-model="lastname">
                 </label>
                 <label class="item item-input item-floating-label">
                     <span class="input-label">Email</span>
-                    <input type="email" placeholder="Email" ng-required="required">
+                    <input type="email" placeholder="Email" ng-required="required" ng-model="email">
                 </label>
                 <label class="item item-input item-floating-label">
                     <span class="input-label">Mobile</span>                
-                    <input type="text" placeholder="10 Digit Mobile Number" ng-minlength="10" ng-maxlength="10" ng-required="required">
+                    <input type="text" placeholder="10 Digit Mobile Number" ng-minlength="10" ng-maxlength="10" ng-required="required" ng-model="mobile">
+                </label>     
+                <label class="item item-input item-floating-label">
+                    <span class="input-label">Password</span>
+                    <input type="password" placeholder="Password" ng-required="required" ng-model="password">
                 </label>            
                 <div class="padding">          
                     <button type="submit" class="button button-block button-energized">Sign Up</button>

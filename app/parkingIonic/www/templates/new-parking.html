@@ -1,18 +1,18 @@
 <ion-view view-title="Add a new Parking!" name="NewParkingView">
     <ion-content ng-controller="AddParkingCtrl">
         <form class="list" ng-app="" ng-init="ackData=false;">
-            <label class="item item-input">
+            <!--<label class="item item-input">
                 <span class="input-label">Vendor Id</span>
                 <input type="text" ng-required="required" value="{{vendors.VendorId}}" ng-readonly="vendors.VendorId"/>
-            </label>
+            </label>-->
             <label class="item item-input item-stacked-label">
                 <span class="input-label">Parking Display Name</span>
                 <input type="text" placeholder="Parking Display Name" ng-required="required">
             </label>
             <label class="item item-input">
                 <span class="input-label">GPS Location</span>
-                <input type="text" ng-required="required" value="{{vendors.GPSLocation}}" ng-readonly="vendors.GPSLocation"/>
-            </label>            
+                <input type="text" ng-required="required" value="{{latitude}} {{longitude}}" ng-readonly="{{latitude}} {{longitude}}"/>
+            </label>    
             <label class="item item-input">
                 <span class="input-label">Number of Parking Slots</span>                
                 <input type="text" placeholder="Parking Slots" ng-required="required">

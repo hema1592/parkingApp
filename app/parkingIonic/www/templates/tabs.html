@@ -5,6 +5,16 @@ navigation history that also transitions its views in and out.
 -->
 <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
+  <!-- Login Tab -->
+  <ion-tab title="Login / Signup?" icon-off="ion-locked" icon-on="ion-unlocked" ui-sref="tab.login">
+    <ion-nav-view name="LoginView"></ion-nav-view>
+  </ion-tab>
+  
+  <!-- Home Tab -->
+  <ion-tab title="Home" icon-off="ion-home" icon-on="ion-home" ui-sref="tab.home">
+    <ion-nav-view name="HomeView"></ion-nav-view>
+  </ion-tab>
+
   <!-- New User Tab -->
   <ion-tab title="New User" icon-off="ion-person-add" icon-on="ion-person-add" ui-sref="tab.user">
     <ion-nav-view name="NewUserView"></ion-nav-view>
@@ -15,19 +25,15 @@ navigation history that also transitions its views in and out.
     <ion-nav-view name="NewVendorView"></ion-nav-view>
   </ion-tab>
   
-  <!-- Working Days Tab -->
-  <!--
-    <ion-tab title="Working Days" icon-off="ion-calendar" icon-on="ion-calendar" ui-sref="tab.workingdays">
-      <ion-nav-view name="WorkingdaysView"></ion-nav-view>
-    </ion-tab>
-  -->
+  <!-- Working Days Tab -->  
+  <ion-tab title="Working Days" icon-off="ion-calendar" icon-on="ion-calendar" ui-sref="tab.workingdays">
+    <ion-nav-view name="WorkingdaysView"></ion-nav-view>
+  </ion-tab>
   
-  <!-- Add Tariff Tab -->
-  <!--
-    <ion-tab title="Add Tariff" icon-off="ion-cash" icon-on="ion-cash" ui-sref="tab.addtariff">
-      <ion-nav-view name="AddTariffView"></ion-nav-view>
-    </ion-tab>
-  -->
+  <!-- Add Tariff Tab -->  
+  <ion-tab title="Add Tariff" icon-off="ion-cash" icon-on="ion-cash" ui-sref="tab.addtariff">
+    <ion-nav-view name="AddTariffView"></ion-nav-view>
+  </ion-tab>
   
   <!-- Register Vehicle Tab -->
   <ion-tab title="Register Vehicle" icon-off="ion-clipboard" icon-on="ion-clipboard" ui-sref="tab.registervehicle"><!-- href="#/tab/registervehicle" -->
@@ -38,15 +44,5 @@ navigation history that also transitions its views in and out.
   <ion-tab title="Add a new Parking" icon-off="ion-model-s" icon-on="ion-model-s" ui-sref="tab.parking">
     <ion-nav-view name="NewParkingView"></ion-nav-view>
   </ion-tab>
-  
-  <!-- Login Tab -->
-  <ion-tab title="Login / Signup?" icon-off="ion-locked" icon-on="ion-unlocked" ui-sref="tab.login">
-    <ion-nav-view name="LoginView"></ion-nav-view>
-  </ion-tab>
-  
-  <!-- Home Tab -->
-  <ion-tab title="Home" icon-off="ion-home" icon-on="ion-home" ui-sref="tab.home">
-    <ion-nav-view name="HomeView"></ion-nav-view>
-  </ion-tab>
-  
+
 </ion-tabs>

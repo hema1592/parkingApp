@@ -40,9 +40,9 @@ exports.deleteSeasonalBookingDetails = function(req, res) {
 
         console.log('Attempting to delete seasonal booking : ' + req.params.bookingid + " " + req.params.uid);
 
-        console.log("CALL spDeleteSeasonalBookingDetails(" + connection.escape(req.params.bookingid) + "," + connection.escape(req.params.uid + ");");
+        console.log("CALL spDeleteSeasonalBookingDetails(" + connection.escape(req.params.bookingid) + "," + connection.escape(req.params.uid) + ");");
 
-        connection.query("CALL spDeleteSeasonalBookingDetails(" + connection.escape(req.params.bookingid) + "," + connection.escape(req.params.uid + ");", function(err, rows){          
+        connection.query("CALL spDeleteSeasonalBookingDetails(" + connection.escape(req.params.bookingid) + "," + connection.escape(req.params.uid) + ");", function(err, rows){          
             connection.release();            
             if(!err) {                                
                 var response = JSON.stringify(rows[0]); 

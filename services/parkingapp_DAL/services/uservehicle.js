@@ -3,7 +3,7 @@ var uservehicleRepo = require('../data/uservehicle');
 exports.addUserVehicleDetails = function (req, res) {
     console.log("User Vehicle Service Contacted...");  
     try {
-        if(typeof req.params.userid req.params.vehicledimensionid == 'undefined' || typeof req.params.regnum == 'undefined') {
+        if(typeof req.params.userid =='undefined' || typeof req.params.vehicledimensionid == 'undefined' || typeof req.params.regnum == 'undefined') {
             return res.status(400).end();
         }   
         console.log("Service Request Vehicle User Id : " + req.params.userid + " Vehicle Dimension DB Id : " + req.params.vehicledimensionid + " Vehicle Registration Number : " + req.params.regnum);

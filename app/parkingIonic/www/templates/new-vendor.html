@@ -3,25 +3,25 @@
         <form class="list" ng-app="" ng-init="checkTermsAgreement=false">
             <label class="item item-input item-floating-label">
                 <span class="input-label">Registered Parking Agency Name</span>
-                <input type="text" placeholder="Registered Parking Agency Name" ng-required="required">
+                <input type="text" placeholder="Registered Parking Agency Name" data-ng-model="vendor.agencyname" required">
             </label>
             <label class="item item-input item-floating-label">
                 <span class="input-label">Parking Lot Owner Name</span>
-                <input type="text" placeholder="Parking Lot Owner Name" ng-required="required">
+                <input type="text" placeholder="Parking Lot Owner Name" data-ng-model="vendor.ownername" required">
             </label>
             <label class="item item-input item-floating-label">
                 <!--<span class="label">Owner's Address</span>-->
                 <span class="input-label">Owner's Address</span>
-                <!--<input type="text" placeholder="Address of the Parking lot" ng-required="required">-->
-                <input type="text" placeholder="Street Name" ng-required="required">
-                <input type="text" placeholder="Area / Neighbourhood" ng-required="required">
-                <input type="text" placeholder="City" ng-required="required">
-                <input type="text" placeholder="Pincode / Zipcode" ng-required="required">
-                <input type="text" placeholder="Nearby Landmark" ng-required="required">
+                <!--<input type="text" placeholder="Address of the Parking lot" data-ng-model="" required">-->
+                <input type="text" placeholder="Street Name" data-ng-model="vendor.streetname" required">
+                <input type="text" placeholder="Area / Neighbourhood" data-ng-model="vendor.area" required">
+                <input type="text" placeholder="City" data-ng-model="vendor.city" required">
+                <input type="text" placeholder="Pincode / Zipcode" data-ng-model="vendor.code" required">
+                <input type="text" placeholder="Nearby Landmark" data-ng-model="vendor.landmark" required">
             </label>              
-            <ion-checkbox ng-model="checkTermsAgreement">I agree to the privacy policy and terms of parkingApp</ion-checkbox>        
+            <ion-checkbox data-ng-model="checkTermsAgreement">I agree to the privacy policy and terms of parkingApp</ion-checkbox>        
             <div class="padding">          
-                <button type="submit" ng-disabled="!checkTermsAgreement" class="button button-block button-positive">Submit</button>
+                <button type="submit" ng-disabled="!checkTermsAgreement" class="button button-block button-positive" ng-click="addNewVendor()">Submit</button>
             </div>
         </form>
     </ion-content>

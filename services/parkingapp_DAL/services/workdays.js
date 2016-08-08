@@ -1,7 +1,7 @@
 var workdaysRepo = require('../data/workdays');
 
 exports.getWorkdaysById = function (req, res) {
-    console.log("Workdays Service Contacted...");  
+    console.log("\nWorkdays Service Contacted...");  
     try {
         if(typeof req.params.workdaysid == 'undefined') {
             return res.status(400).end();

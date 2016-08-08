@@ -42,9 +42,10 @@ exports.getUserDetailsById = function(req, res) {
 
     pool.getConnection(function(err, connection){
         if (err) {
-            connection.release();
-            res.json({"code" : 503, "status" : "Error connecting to database.. :("});
-            return;
+            //connection.release();
+            var db_conn_error = JSON.stringify({"code" : 503, "status" : "Error connecting to database.. :("});
+            console.log(db_conn_error); 
+            return res(null, db_conn_error); 
         }   
 
         console.log('Connected as Thread Id: ' + connection.threadId);

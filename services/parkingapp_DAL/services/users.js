@@ -1,7 +1,7 @@
 var usersRepo = require('../data/users');
 
 exports.getUserDetails = function (req, res) {
-    console.log("User Service Contacted...");
+    console.log("\nUser Service Contacted...");
     try {
         if(!req) {
             return res.status(400).end();
@@ -32,7 +32,7 @@ exports.getUserDetails = function (req, res) {
 };
 
 exports.getUserDetailsById = function (req, res) {
-    console.log("User Service Contacted...");
+    console.log("\nUser Service Contacted...");
     try {
         if(!req.params.id) {
             return res.status(400).end();
@@ -62,7 +62,7 @@ exports.getUserDetailsById = function (req, res) {
 };
 
 exports.addUserDetails = function (req, res) {
-    console.log("User Service Contacted...");  
+    console.log("\nUser Service Contacted...");  
     try {
         if(typeof req.params.username == 'undefined' || typeof req.params.phoneno == 'undefined' || typeof req.params.firstname == 'undefined' || typeof req.params.lastname == 'undefined' || typeof req.params.email == 'undefined' || typeof req.params.userpass == 'undefined' || typeof req.params.usertype == 'undefined') {
             return res.status(400).end();
@@ -94,7 +94,7 @@ exports.addUserDetails = function (req, res) {
 };
 
 exports.deleteUserDetails = function (req, res) {
-    console.log("User Service Contacted...");  
+    console.log("\nUser Service Contacted...");  
     try {
         if(typeof req.params.userid == 'undefined' || typeof req.params.uid == 'undefined' || typeof req.params.upass == 'undefined') {
             return res.status(400).end();
@@ -126,7 +126,7 @@ exports.deleteUserDetails = function (req, res) {
 };
 
 exports.updateUserDetails = function (req, res) {
-    console.log("User Service Contacted...");  
+    console.log("\nUser Service Contacted...");  
     try {
         if(typeof req.params.userid == 'undefined' || typeof req.params.username == 'undefined' || typeof req.params.phoneno == 'undefined' || typeof req.params.firstname == 'undefined' || typeof req.params.lastname == 'undefined' || typeof req.params.email == 'undefined' || typeof req.params.userpass == 'undefined' || typeof req.params.usertype == 'undefined') {
             return res.status(400).end();
@@ -158,7 +158,7 @@ exports.updateUserDetails = function (req, res) {
 };
 
 exports.getUserDetailsByUserType = function (req, res) {
-    console.log("User Service Contacted...");  
+    console.log("\nUser Service Contacted...");  
     try {
         if(typeof req.params.usertype == 'undefined') {
             return res.status(400).end();

@@ -1,5 +1,5 @@
 <ion-view view-title="Login / Sign Up?" name="LoginView">
-    <ion-content ng-controller="LoginCtrl" ng-init="option = 0">
+    <ion-content ng-init="option = 1">
         <label class="bar bar-balanced col padding item item-stacked-label">
             <h4 class="title">What would you like to do today?</h4>
         </label>     
@@ -12,46 +12,46 @@
                     <label class="button button-block button-energized" ng-click="option = 2">Sign Up</label>
                 </label>
             </label>            
-            <div ng-show="option == 1">
+            <div ng-controller="LoginCtrl" ng-if="option == 1">
                 <label class="item item-input item-floating-label">
                     <span class="input-label">Email / Mobile</span>
-                    <input type="text" placeholder="Email / Mobile" ng-required="required" ng-model="input">
+                    <input type="text" placeholder="Email / Mobile" data-ng-model="login.input" required>
                 </label>
                 <label class="item item-input item-floating-label">
                     <span class="input-label">Password</span>
-                    <input type="password" placeholder="Password" ng-required="required" ng-model="passkey">
-                </label>          
+                    <input type="password" placeholder="Password"  data-ng-model="login.passkey" required>
+                </label>                  
                 <div class="padding">          
-                    <button type="submit" class="button button-block button-positive">Login!</button>
+                    <button type="submit" class="button button-block button-positive" ng-click="tryLoginVerification()">Login!</button>
                 </div>
             </div>
-            <div ng-show="option == 2">
+            <div ng-controller="AddUserCtrl" ng-if="option == 2">
                 <label class="item item-input item-floating-label">
                     <span class="input-label">Username</span>
-                    <input type="text" placeholder="Username" ng-required="required" ng-model="username">
+                    <input type="text" placeholder="Username"  data-ng-model="signup.username" required>
                 </label>
                 <label class="item item-input item-floating-label">
                     <span class="input-label">First Name</span>
-                    <input type="text" placeholder="First Name" ng-required="required" ng-model="firstname">
+                    <input type="text" placeholder="First Name"  data-ng-model="signup.firstname" required>
                 </label>
                 <label class="item item-input item-floating-label">
                     <span class="input-label">Last Name</span>
-                    <input type="text" placeholder="Last Name" ng-required="required" ng-model="lastname">
+                    <input type="text" placeholder="Last Name"  data-ng-model="signup.lastname" required>
                 </label>
                 <label class="item item-input item-floating-label">
                     <span class="input-label">Email</span>
-                    <input type="email" placeholder="Email" ng-required="required" ng-model="email">
+                    <input type="email" placeholder="Email"  data-ng-model="signup.email" required>
                 </label>
                 <label class="item item-input item-floating-label">
                     <span class="input-label">Mobile</span>                
-                    <input type="text" placeholder="10 Digit Mobile Number" ng-minlength="10" ng-maxlength="10" ng-required="required" ng-model="mobile">
+                    <input type="text" placeholder="10 Digit Mobile Number" ng-minlength="10" ng-maxlength="10"  data-ng-model="signup.phoneno" required>
                 </label>     
                 <label class="item item-input item-floating-label">
                     <span class="input-label">Password</span>
-                    <input type="password" placeholder="Password" ng-required="required" ng-model="password">
+                    <input type="password" placeholder="Password"  data-ng-model="signup.password" required>
                 </label>            
                 <div class="padding">          
-                    <button type="submit" class="button button-block button-energized">Sign Up</button>
+                    <button type="submit" class="button button-block button-energized" ng-click="addNewUser()">Sign Up</button>
                 </div>
             </div>
         </form>

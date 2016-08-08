@@ -8,7 +8,7 @@ exports.addSeasonalBookingDetails = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to add seasonal booking : ' + req.params.sp_parkingid + " " + req.params.sp_vendorid + " " + req.params.sp_carid + " " + req.params.sp_bookingfrom + " " + req.params.sp_bookingto + " " + req.params.sp_workdaysid + " " + req.params.sp_paymentmethodid + " " + req.params.sp_paymentstatus);
 
@@ -36,7 +36,7 @@ exports.deleteSeasonalBookingDetails = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to delete seasonal booking : ' + req.params.bookingid + " " + req.params.uid);
 
@@ -64,7 +64,7 @@ exports.updateSeasonalBookingDetails = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to update seasonal booking : ' + req.params.bookingid + " Parking Id : " + req.params.parkingid + " Vendor Id : " + req.params.vendorid + " User Car Id : " + req.params.usercarid + " From time : " + req.params.fromtime + " To Time : " + req.params.totime + " Workdays Id : " + req.params.workdaysid + " Payment Method Id : " + req.params.paymentmethodid + " Payment Status : " + req.params.paymentstatus);
 

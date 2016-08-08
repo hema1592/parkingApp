@@ -8,7 +8,7 @@ exports.addTariffDetails = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to add tariff : ' + req.params.locationid + " " + req.params.vehicletypeid + " " + req.params.tariffamount);
 
@@ -36,7 +36,7 @@ exports.deleteTariffDetails = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to delete tariff : ' + req.params.tariffid + " " + req.params.uid);
 
@@ -64,7 +64,7 @@ exports.updateTariffDetails = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to update tariff : ' + req.params.tariffid + " " + req.params.locationid + " " + req.params.vehicletypeid + " " + req.params.tariffamount);
 
@@ -92,7 +92,7 @@ exports.getTariffDetailsById = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to get tariff info : ' + req.params.tariffid);
 

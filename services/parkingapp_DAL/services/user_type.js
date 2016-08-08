@@ -1,7 +1,7 @@
 var usertypeRepo = require('../data/user_type');
 
 exports.addUserType = function (req, res) {
-    console.log("User Type Service Contacted...");  
+    console.log("\nUser Type Service Contacted...");  
     try {
         if(typeof req.params.newusertype == 'undefined') {
             return res.status(400).end();
@@ -33,7 +33,7 @@ exports.addUserType = function (req, res) {
 };
 
 exports.deleteUserType = function (req, res) {
-    console.log("User Type Service Contacted...");  
+    console.log("\nUser Type Service Contacted...");  
     try {
         if(typeof req.params.usertypeid == 'undefined' || typeof req.params.uid == 'undefined' || typeof req.params.upass == 'undefined') {
             return res.status(400).end();
@@ -65,7 +65,7 @@ exports.deleteUserType = function (req, res) {
 };
 
 exports.updateUserType = function (req, res) {
-    console.log("User Type Service Contacted...");  
+    console.log("\nUser Type Service Contacted...");  
     try {
         if(typeof req.params.usertypeid == 'undefined' || typeof req.params.newusertype == 'undefined') {
             return res.status(400).end();

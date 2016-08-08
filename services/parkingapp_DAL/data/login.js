@@ -8,16 +8,15 @@ exports.getLoginVerified = function(req, res) {
     try {
         var user_id = req.params.user_id;
         console.log("User ID : " + user_id);
-        var x = user_id/1;
-        console.log("After computation : " + user_id + " X : " + x);
-        if(x) {
+        if(isNaN(user_id)) {
+            mode = 1;            
+        }
+        else if(user_id /1) {
             mode = 2;
-            console.log(mode);
-        }    
+        }
     }
     catch(err) {
-        mode = 1;
-        console.log(mode);
+        console.log("Invalid: Login mode not supported!");
     }
     pool.getConnection(function(err, connection){
         if (err) {
@@ -25,9 +24,9 @@ exports.getLoginVerified = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
-        console.log('Attempting to verify login : ' + req.params.user_id + " " + req.params.user_pass);
+        console.log('Attempting to verify login : ' + mode + " " + req.params.user_id + " " + req.params.user_pass);
 
         connection.query("CALL spGetLoginVerified(" + connection.escape(mode) + "," + connection.escape(req.params.user_id) + "," + connection.escape(req.params.user_pass) +");", function(err, rows){          
             connection.release();            

@@ -8,7 +8,7 @@ exports.addPaymentMethodDetails = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to add payment method : ' + req.params.method_desc + " " + req.params.method_redirect_url);
 
@@ -34,7 +34,7 @@ exports.deletePaymentMethodDetails = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);  
+        console.log('\nConnected as Thread Id: ' + connection.threadId);  
 
         console.log('Attempting to delete payment method : ' + req.params.method_id + " " + req.params.uid);
         
@@ -62,7 +62,7 @@ exports.updatePaymentMethodDetails = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);  
+        console.log('\nConnected as Thread Id: ' + connection.threadId);  
 
         console.log('Attempting to update payment method : ' + req.params.paymentmethodid + " " + req.params.methodname + " " + req.params.methodurl);
         

@@ -1,7 +1,7 @@
 var uservehicleRepo = require('../data/uservehicle');
 
 exports.addUserVehicleDetails = function (req, res) {
-    console.log("User Vehicle Service Contacted...");  
+    console.log("\nUser Vehicle Service Contacted...");  
     try {
         if(typeof req.params.userid =='undefined' || typeof req.params.vehicledimensionid == 'undefined' || typeof req.params.regnum == 'undefined') {
             return res.status(400).end();
@@ -33,7 +33,7 @@ exports.addUserVehicleDetails = function (req, res) {
 };
 
 exports.deleteUserVehicleDetails = function (req, res) {
-    console.log("User Vehicle Service Contacted...");  
+    console.log("\nUser Vehicle Service Contacted...");  
     try {
         if(typeof req.params.userid == 'undefined' || typeof req.params.uid == 'undefined' || typeof req.params.upass == 'undefined') {
             return res.status(400).end();
@@ -65,7 +65,7 @@ exports.deleteUserVehicleDetails = function (req, res) {
 };
 
 exports.updateUserVehicleDetails = function (req, res) {
-    console.log("User Vehicle Service Contacted...");  
+    console.log("\nUser Vehicle Service Contacted...");  
     try {
         if(typeof req.params.uservehicleid == 'undefined' || typeof req.params.userid == 'undefined' || typeof req.params.carid == 'undefined' || typeof req.params.vehicledimensionid == 'undefined' || typeof req.params.regnum == 'undefined') {
             return res.status(400).end();
@@ -97,7 +97,7 @@ exports.updateUserVehicleDetails = function (req, res) {
 };
 
 exports.getUserVehicleDetailsById = function (req, res) {
-    console.log("User Vehicle Service Contacted...");  
+    console.log("\nUser Vehicle Service Contacted...");  
     try {
         if(typeof req.params.uservehicleid == 'undefined') {
             return res.status(400).end();

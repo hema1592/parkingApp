@@ -33,7 +33,7 @@ var vehicleRepo = require('../data/vehicle');
 };*/
 
 exports.getListAllVehiclesByVehicleType = function (req, res) {
-    console.log("Vehicle Service Contacted...");  
+    console.log("\nVehicle Service Contacted...");  
     try {
         if(typeof req.params.vehicletypeid == 'undefined') {
             return res.status(400).end();
@@ -65,7 +65,7 @@ exports.getListAllVehiclesByVehicleType = function (req, res) {
 };
 
 exports.getVehicleDescByVehicleMake = function (req, res) {
-    console.log("Vehicle Service Contacted...");  
+    console.log("\nVehicle Service Contacted...");  
     try {
         if(typeof req.params.vehiclemake == 'undefined') {
             return res.status(400).end();
@@ -97,7 +97,7 @@ exports.getVehicleDescByVehicleMake = function (req, res) {
 };
 
 exports.getVehicleDetailsById = function (req, res) {
-    console.log("Vehicle Service Contacted...");  
+    console.log("\nVehicle Service Contacted...");  
     try {
         if(typeof req.params.vehicleid == 'undefined') {
             return res.status(400).end();
@@ -129,7 +129,7 @@ exports.getVehicleDetailsById = function (req, res) {
 };
 
 exports.getVehicleMakeByVehicleType = function (req, res) {
-    console.log("Vehicle Service Contacted...");  
+    console.log("\nVehicle Service Contacted...");  
     try {
         if(typeof req.params.vehicletype == 'undefined') {
             return res.status(400).end();
@@ -161,7 +161,7 @@ exports.getVehicleMakeByVehicleType = function (req, res) {
 };
 
 exports.getVehiclesByVehicleType = function (req, res) {
-    console.log("Vehicle Service Contacted...");  
+    console.log("\nVehicle Service Contacted...");  
     try {
         if(typeof req.params.vehicletypeid == 'undefined') {
             return res.status(400).end();

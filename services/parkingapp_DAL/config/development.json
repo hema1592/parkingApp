@@ -1,7 +1,16 @@
 //DEV CONFIGURATION
-{
-	"debug": true,
-    "multipleStatements": true,
-    "url": "192.168.10.5",
-    "port": "7337"
+{	
+    "service": {
+        "url": "192.168.10.5",
+        "port": "7337"
+    },
+    "db": {
+        "connectionLimit"     : "100", //important
+        "host"                : "192.168.10.20",
+        "user"                : "parkingAppDAL",
+        "password"            : "ourpassword",
+        "database"            : "parkingapp",
+        "debug"               : false,
+        "multipleStatements"  : true
+    }
 }

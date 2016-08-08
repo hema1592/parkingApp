@@ -1,67 +1,678 @@
 angular.module('starter.services', [])
-/*.service('service', function($http, $rootScope) {
-  var urls = {
-    addLocation : /location/:loc_address/:loc_area/:loc_landmark/:loc_city,
-    deleteLocation : /location/:locationid/:uid/:upass,
-    updateLocation : /location/:locationid/:loc_address/:loc_area/:loc_landmark/:loc_city,
-    getLocationById : /location/:locationid,
+  .service('parkingappservice', function ($http, $rootScope) {
+    var baseUrl = "http://localhost:7337";
+    var urls = {
+      addLocation: '/location/{0}/{1}/{2}/{3}',
+      deleteLocation: '/location/{0}/{1}/{2}',
+      updateLocation: '/location/{0}/{1}/{2}/{3}/{4}',
+      getLocationById: '/location/{0}',
+      getNearbyLocationsByLocation : '/location/{0}',
 
-    getLoginVerified : /login/:user_id/:user_pass,
+      getLoginVerified: '/login/{0}/{1}',
 
-    addParkingLotDetails : /parking/:parking_name/:parking_vendor_id/:parking_loc_id/:parking_tariff_id/:parking_slots/:parking_from_time/:parking_to_time/:parking_workdays_id/:parking_managed_status,
-    deleteParkingLotDetails : /parking/:parkingid/:uid/:upass,
-    updateParkingLotDetails : /parking/:parkingid/:vendorid/:parkingname/:locationid/:tariffid/:totalslots/:fromtime/:totime/:workdaysid/:managedstatus,
-    getParkingLotDetailsById : /parking/:parkingid,
+      addParkingLotDetails: '/parking/{0}/{1}/{2}/{3}/{4}/{5}/{6}/{7}/{8}',
+      deleteParkingLotDetails: '/parking/{0}/{1}/{2}',
+      updateParkingLotDetails: '/parking/{0}/{1}/{2}/{3}/{4}/{5}/{6}/{7}/{8}/{9}',
+      getParkingLotDetailsById: '/parking/{0}',
 
-    addPaymentMethodDetails : /payment_method/:method_desc/:method_redirect_url,
-    deletePaymentMethodDetails : /payment_method/:method_id/:uid/:upass,
-    updatePaymentMethodDetails : /payment_method/:paymentmethodid/:methodname/:methodurl,
+      addPaymentMethodDetails: '/payment_method/{0}/{1}',
+      deletePaymentMethodDetails: '/payment_method/{0}/{1}/{2}',
+      updatePaymentMethodDetails: '/payment_method/{0}/{1}/{2}',
 
-    addSeasonalBookingDetails : /seasonal_booking/:sp_parkingid/:sp_vendorid/:sp_carid/:sp_bookingfrom/:sp_bookingto/:sp_workdaysid/:sp_paymentmethodid/:sp_paymentstatus,
-    deleteSeasonalBookingDetails : /seasonal_booking/:bookingid/:uid/:upass,
-    updateSeasonalBookingDetails : /seasonal_booking/:bookingid/:parkingid/:vendorid/:usercarid/:fromtime/:totime/:workdaysid/:paymentmethodid/:paymentstatus,
+      addSeasonalBookingDetails: '/seasonal_booking/{0}/{1}/{2}/{3}/{4}/{5}/{6}/{7}',
+      deleteSeasonalBookingDetails: '/seasonal_booking/{0}/{1}/{2}',
+      updateSeasonalBookingDetails: '/seasonal_booking/{0}/{1}/{2}/{3}/{4}/{5}/{6}/{7}/{8}',
 
-    addTariffDetails : /tariff/:locationid/:vehicletypeid/:tariffamount,
-    deleteTariffDetails : /tariff/:tariffid/:uid/:upass,
-    updateTariffDetails : /tariff/:tariffid/:locationid/:vehicletypeid/:tariffamount,
-    getTariffDetailsById : /tariff/:tariffid,
+      addTariffDetails: '/tariff/{0}/{1}/{2}',
+      deleteTariffDetails: '/tariff/{0}/{1}/{2}',
+      updateTariffDetails: '/tariff/{0}/{1}/{2}/{3}',
+      getTariffDetailsById: '/tariff/{0}',
 
-    addUserType : /user_type/:newusertype,
-    deleteUserType : /user_type/:usertypeid/:uid/:upass,
-    updateUserType : /user_type/:usertypeid/:newusertype,
+      addUserType: '/user_type/{0}',
+      deleteUserType: '/user_type/{0}/{1}/{2}',
+      updateUserType: '/user_type/{0}/{1}',
 
-    getUserDetails : /users/all,
-    getUserDetailsById : /users/:id,
-    addUserDetails : /users/:username/:phoneno/:firstname/:lastname/:email/:userpass/:usertype,
-    deleteUserDetails : /users/:userid/:uid/:upass,
-    updateUserDetails : /users/:userid/:username/:phoneno/:firstname/:lastname/:email/:userpass/:usertype,
-    getUserDetailsByUserType : /users/type/:usertype,
+      getUserDetails: '/users/all',
+      getUserDetailsById: '/users/{0}',
+      addUserDetails: '/users/{0}/{1}/{2}/{3}/{4}/{5}/{6}',
+      deleteUserDetails: '/users/{0}/{1}/{2}',
+      updateUserDetails: '/users/{0}/{1}/{2}/{3}/{4}/{5}/{6}/{7}',
+      getUserDetailsByUserType: '/users/type/{0}',
 
-    addUserVehicleDetails : /uservehicle/:userid/:vehicledimensionid/:regnum,
-    deleteUserVehicleDetails : /uservehicle/:userid/:uid/:upass,
-    updateUserVehicleDetails : /uservehicle/:uservehicleid/:userid/:carid/:vehicledimensionid/:regnum,
-    getUserVehicleDetailsById : /uservehicle/:uservehicleid,
+      addUserVehicleDetails: '/uservehicle/{0}/{1}/{2}',
+      deleteUserVehicleDetails: '/uservehicle/{0}/{1}/{2}',
+      updateUserVehicleDetails: '/uservehicle/{0}/{1}/{2}/{3}',
+      getUserVehicleDetailsById: '/uservehicle/{0}',
 
-    getListAllVehiclesByVehicleType : /vehicle/types/:vehicletypeid,
-    getVehicleDescByVehicleMake : /vehicle/make/:vehiclemake,
-    getVehicleDetailsById : /vehicle/:vehicleid,
-    getVehicleMakeByVehicleType : /vehicle/type/:vehicletype,
-    getVehiclesByVehicleType : /vehicle/all/:vehicletypeid,
+      getListAllVehiclesByVehicleType: '/vehicle/types/{0}',
+      getVehicleDescByVehicleMake: '/vehicle/make/{0}',
+      getVehicleDetailsById: '/vehicle/{0}',
+      getVehicleMakeByVehicleType: '/vehicle/type/{0}',
+      getVehiclesByVehicleType: '/vehicle/all/{0}',
 
-    addVehicleType : /vehicle_type/:newvehicletype,
-    deleteVehicleType : /vehicle_type/:vehicletypeid/:uid/:upass,
-    updateVehicleType : /vehicle_type/:vehicletypeid/:newvehicletype,
-    getListAllVehicleTypes : /vehicle_type/all,
-    getVehicleTypeById : /vehicle_type/:id,
+      addVehicleType: '/vehicle_type/{0}',
+      deleteVehicleType: '/vehicle_type/{0}/{1}/{2}',
+      updateVehicleType: '/vehicle_type/{0}/{1}',
+      getListAllVehicleTypes: '/vehicle_type/all',
+      getVehicleTypeById: '/vehicle_type/{0}',
 
-    addVendorDetails : /vendor/:userid/:ownername/:owneraddress/:ownerlocationid,
-    deleteVendorDetails : /vendor/:vendorid/:uid/:upass,
-    updateVendorDetails : /vendor/:vendorid/:userid/:ownername/:owneraddress/:ownerlocationid,
-    getVendorDetailsById : /vendor/:vendorid,
+      addVendorDetails: '/vendor/{0}/{1}/{2}/{3}',
+      deleteVendorDetails: '/vendor/{0}/{1}/{2}',
+      updateVendorDetails: '/vendor/{0}/{1}/{2}/{3}/{4}',
+      getVendorDetailsById: '/vendor/{0}',
 
-    getWorkdaysById : /workdays/:workdaysid
-  }
-})*/
+      getWorkdaysById: '/workdays/{0}'
+    };
+
+    function format() {
+      var args = arguments[0];
+      for (var i = 0; i < arguments.length - 1; i++) {
+        var reg_exp = new RegExp("\\{" + i + "\\}");
+        args = args.replace(reg_exp, arguments[i + 1]);
+      }
+      $rootScope.lastExecutedCall = args;
+      return args;
+    }
+
+    function makeGetCall(serviceUrl) {
+      return $http.get(serviceUrl)
+        .then(function (response) {
+          response.data.url = serviceUrl;
+          return response;
+        }).then(returnData)
+        .then(function (data) {
+          return data;
+        });
+    }
+
+    function returnData(res) {
+      if(res.data) {
+        return res.data;      
+      }
+      throw new Error('Return data error ... ');
+    }
+
+    return {
+      getLocationById: function (locationid) {
+        var serviceUrl = baseUrl + format(urls.getLocationById, locationid);
+        return makeGetCall(serviceUrl);
+      },
+
+      addLocation: function (loc_address, loc_area, loc_landmark, loc_city) {
+        var fields = {
+          "loc_address": loc_address,
+          "loc_area": loc_area,
+          "loc_landmark": loc_landmark,
+          "loc_city": loc_city
+        };
+        var serviceUrl = baseUrl + format(urls.addLocation, loc_address, loc_area, loc_landmark, loc_city);
+        var request = {
+          url: serviceUrl,
+          method: 'POST',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      deleteLocation: function (locationid, uid, upass) {
+        var fields = {
+          "locationid": locationid,
+          "uid": uid,
+          "upass": upass
+        };
+        var serviceUrl = baseUrl + format(urls.deleteLocation, locationid, uid, upass);
+        var request = {
+          url: serviceUrl,
+          method: 'DELETE',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      updateLocation: function (locationid, loc_address, loc_area, loc_landmark, loc_city) {
+        var fields = {
+          "locationid": locationid,
+          "loc_address": loc_address,
+          "loc_area": loc_area,
+          "loc_landmark": loc_landmark,
+          "loc_city": loc_city
+        };
+        var serviceUrl = baseUrl + format(urls.updateLocation, locationid, loc_address, loc_area, loc_landmark, loc_city);
+        var request = {
+          url: serviceUrl,
+          method: 'PUT',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      getLoginVerified: function (user_id, user_pass) {
+        var fields = {
+          "user_id": user_id,
+          "user_pass": user_pass
+        };
+        var serviceUrl = baseUrl + format(urls.getLoginVerified, user_id, user_pass);
+        var request = {
+          url: serviceUrl,
+          method: 'POST',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      addParkingLotDetails: function (parking_name,parking_vendor_id,parking_loc_id,parking_tariff_id,parking_slots,parking_from_time,parking_to_time,parking_workdays_id,parking_managed_status) {
+        var fields = {
+          "parking_name": parking_name,
+          "parking_vendor_id": parking_vendor_id,
+          "parking_loc_id": parking_loc_id,
+          "parking_tariff_id": parking_tariff_id,
+          "parking_slots": parking_slots,
+          "parking_from_time": parking_from_time,
+          "parking_to_time": parking_to_time,
+          "parking_workdays_id": parking_workdays_id,
+          "parking_managed_status": parking_managed_status
+        };
+        var serviceUrl = baseUrl + format(urls.addLocation, parking_name,parking_vendor_id,parking_loc_id,parking_tariff_id,parking_slots,parking_from_time,parking_to_time,parking_workdays_id,parking_managed_status);
+        var request = {
+          url: serviceUrl,
+          method: 'POST',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      deleteParkingLotDetails: function (parkingid, uid, upass) {
+        var fields = {
+          "parkingid": parkingid,
+          "uid": uid,
+          "upass": upass
+        };
+        var serviceUrl = baseUrl + format(urls.deleteParkingLotDetails, parkingid, uid, upass);
+        var request = {
+          url: serviceUrl,
+          method: 'DELETE',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      updateParkingLotDetails: function (parkingid,parking_vendor_id,parking_name,parking_loc_id,parking_tariff_id,parking_slots,parking_from_time,parking_to_time,parking_workdays_id,parking_managed_status) {
+        var fields = {
+          "parkingid": parkingid,
+          "parking_name": parking_name,
+          "parking_vendor_id": parking_vendor_id,
+          "parking_loc_id": parking_loc_id,
+          "parking_tariff_id": parking_tariff_id,
+          "parking_slots": parking_slots,
+          "parking_from_time": parking_from_time,
+          "parking_to_time": parking_to_time,
+          "parking_workdays_id": parking_workdays_id,
+          "parking_managed_status": parking_managed_status
+        };
+        var serviceUrl = baseUrl + format(urls.updateParkingLotDetails,parkingid,parking_vendor_id,parking_name,parking_loc_id,parking_tariff_id,parking_slots,parking_from_time,parking_to_time,parking_workdays_id,parking_managed_status);
+        var request = {
+          url: serviceUrl,
+          method: 'PUT',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      getParkingLotDetailsById: function (parkingid) {
+        var serviceUrl = baseUrl + format(urls.getParkingLotDetailsById, parkingid);
+        return makeGetCall(serviceUrl);
+      },
+
+      addPaymentMethodDetails: function (method_desc,method_redirect_url) {
+        var fields = {
+          "method_desc": method_desc,
+          "method_redirect_url": method_redirect_url        
+        };
+        var serviceUrl = baseUrl + format(urls.addPaymentMethodDetails,method_desc,method_redirect_url);
+        var request = {
+          url: serviceUrl,
+          method: 'POST',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      deletePaymentMethodDetails: function (method_id,uid,upass) {
+        var fields = {
+          "method_id": method_id,
+          "uid": uid,
+          "upass": upass
+        };
+        var serviceUrl = baseUrl + format(urls.deletePaymentMethodDetails,method_id,uid,upass);
+        var request = {
+          url: serviceUrl,
+          method: 'DELETE',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      updatePaymentMethodDetails: function (paymentmethodid,methodname,methodurl) {
+        var fields = {
+          "paymentmethodid": paymentmethodid,
+          "methodname": methodname,
+          "methodurl": methodurl
+        };
+        var serviceUrl = baseUrl + format(urls.updatePaymentMethodDetails,paymentmethodid,methodname,methodurl);
+        var request = {
+          url: serviceUrl,
+          method: 'PUT',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      addSeasonalBookingDetails: function (sp_parkingid,sp_vendorid,sp_carid,sp_bookingfrom,sp_bookingto,sp_workdaysid,sp_paymentmethodid,sp_paymentstatus) {
+        var fields = {
+          "sp_parkingid": sp_parkingid,
+          "sp_vendorid": sp_vendorid,
+          "sp_carid": sp_carid,
+          "sp_bookingfrom": sp_bookingfrom,
+          "sp_bookingto": sp_bookingto,
+          "sp_workdaysid": sp_workdaysid,
+          "sp_paymentmethodid": sp_paymentmethodid,
+          "sp_paymentstatus": sp_paymentstatus
+        };
+        var serviceUrl = baseUrl + format(urls.addSeasonalBookingDetails,sp_parkingid,sp_vendorid,sp_carid,sp_bookingfrom,sp_bookingto,sp_workdaysid,sp_paymentmethodid,sp_paymentstatus);
+        var request = {
+          url: serviceUrl,
+          method: 'POST',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      deleteSeasonalBookingDetails: function (bookingid,uid,upass) {
+        var fields = {
+          "bookingid": bookingid,
+          "uid": uid,
+          "upass": upass
+        };
+        var serviceUrl = baseUrl + format(urls.deleteSeasonalBookingDetails,bookingid,uid,upass);
+        var request = {
+          url: serviceUrl,
+          method: 'DELETE',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      updateSeasonalBookingDetails: function (bookingid,sp_parkingid,sp_vendorid,sp_carid,sp_bookingfrom,sp_bookingto,sp_workdaysid,sp_paymentmethodid,sp_paymentstatus) {
+        var fields = {
+          "bookingid" : bookingid,
+          "sp_parkingid": sp_parkingid,
+          "sp_vendorid": sp_vendorid,
+          "sp_carid": sp_carid,
+          "sp_bookingfrom": sp_bookingfrom,
+          "sp_bookingto": sp_bookingto,
+          "sp_workdaysid": sp_workdaysid,
+          "sp_paymentmethodid": sp_paymentmethodid,
+          "sp_paymentstatus": sp_paymentstatus
+        };
+        var serviceUrl = baseUrl + format(urls.updateSeasonalBookingDetails,bookingid,sp_parkingid,sp_vendorid,sp_carid,sp_bookingfrom,sp_bookingto,sp_workdaysid,sp_paymentmethodid,sp_paymentstatus);
+        var request = {
+          url: serviceUrl,
+          method: 'PUT',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      addTariffDetails: function (locationid,vehicletypeid,tariffamount) {
+        var fields = {
+          "locationid": locationid,
+          "vehicletypeid": vehicletypeid,
+          "tariffamount": tariffamount
+        };
+        var serviceUrl = baseUrl + format(urls.addTariffDetails,locationid,vehicletypeid,tariffamount);
+        var request = {
+          url: serviceUrl,
+          method: 'POST',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      deleteTariffDetails: function (tariffid,uid,upass) {
+        var fields = {
+          "tariffid": tariffid,
+          "uid": uid,
+          "upass": upass
+        };
+        var serviceUrl = baseUrl + format(urls.deleteTariffDetails,tariffid,uid,upass);
+        var request = {
+          url: serviceUrl,
+          method: 'DELETE',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      updateTariffDetails: function (tariffid,locationid,vehicletypeid,tariffamount) {
+        var fields = {
+          "tariffid" : tariffid,
+          "locationid": locationid,
+          "vehicletypeid": vehicletypeid,
+          "tariffamount": tariffamount
+        };
+        var serviceUrl = baseUrl + format(urls.updateTariffDetails,tariffid,locationid,vehicletypeid,tariffamount);
+        var request = {
+          url: serviceUrl,
+          method: 'PUT',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      getTariffDetailsById: function (tariffid) {
+        var serviceUrl = baseUrl + format(urls.getTariffDetailsById, tariffid);
+        return makeGetCall(serviceUrl);
+      },
+
+      addUserType: function (newusertype) {
+        var fields = {
+          "newusertype": newusertype
+        };
+        var serviceUrl = baseUrl + format(urls.addUserType,newusertype);
+        var request = {
+          url: serviceUrl,
+          method: 'POST',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      deleteUserType: function (usertypeid,uid,upass) {
+        var fields = {
+          "usertypeid": usertypeid,
+          "uid": uid,
+          "upass": upass
+        };
+        var serviceUrl = baseUrl + format(urls.deleteUserType,usertypeid,uid,upass);
+        var request = {
+          url: serviceUrl,
+          method: 'DELETE',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      updateUserType: function (usertypeid,newusertype) {
+        var fields = {
+          "usertypeid" : usertypeid,
+          "newusertype": newusertype
+        };
+        var serviceUrl = baseUrl + format(urls.updateUserType,usertypeid,newusertype);
+        var request = {
+          url: serviceUrl,
+          method: 'PUT',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      getUserDetails: function () {
+        var serviceUrl = baseUrl + format(urls.getUserDetails);
+        return makeGetCall(serviceUrl);
+      },
+
+      getUserDetailsById: function (id) {
+        var serviceUrl = baseUrl + format(urls.getUserDetailsById, id);
+        return makeGetCall(serviceUrl);
+      },
+
+      getUserDetailsByUserType: function (usertype) {
+        var serviceUrl = baseUrl + format(urls.getUserDetailsByUserType, usertype);
+        return makeGetCall(serviceUrl);
+      },
+
+      addUserDetails: function (username,phoneno,firstname,lastname,email,userpass,usertype) {
+        var fields = {
+          "username": username,
+          "phoneno": phoneno,
+          "firstname": firstname,
+          "lastname": lastname,
+          "email": email,
+          "userpass": userpass,
+          "usertype": usertype          
+        };
+        var serviceUrl = baseUrl + format(urls.addUserDetails,username,phoneno,firstname,lastname,email,userpass,usertype);
+        var request = {
+          url: serviceUrl,
+          method: 'POST',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      deleteUserDetails: function (userid,uid,upass) {
+        var fields = {
+          "userid": userid,
+          "uid": uid,
+          "upass": upass
+        };
+        var serviceUrl = baseUrl + format(urls.deleteUserDetails,userid,uid,upass);
+        var request = {
+          url: serviceUrl,
+          method: 'DELETE',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      updateUserDetails: function (userid,username,phoneno,firstname,lastname,email,userpass,usertype) {
+        var fields = {
+          "userid" : userid,
+          "username": username,
+          "phoneno": phoneno,
+          "firstname": firstname,
+          "lastname": lastname,
+          "email": email,
+          "userpass": userpass,
+          "usertype": usertype          
+        };
+        var serviceUrl = baseUrl + format(urls.updateUserDetails,userid,username,phoneno,firstname,lastname,email,userpass,usertype);
+        var request = {
+          url: serviceUrl,
+          method: 'PUT',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      addUserVehicleDetails: function (userid,vehicledimensionid,regnum) {
+        var fields = {
+          "userid": userid,
+          "vehicledimensionid": vehicledimensionid,
+          "regnum": regnum          
+        };
+        var serviceUrl = baseUrl + format(urls.addUserVehicleDetails,userid,vehicledimensionid,regnum);
+        var request = {
+          url: serviceUrl,
+          method: 'POST',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      deleteUserVehicleDetails: function (userid,carid,uid,upass) {
+        var fields = {
+          "userid": userid,
+          "carid" : carid,
+          "uid": uid,
+          "upass": upass
+        };
+        var serviceUrl = baseUrl + format(urls.deleteUserVehicleDetails,userid,carid,uid,upass);
+        var request = {
+          url: serviceUrl,
+          method: 'DELETE',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      updateUserVehicleDetails: function (userid,carid,vehicledimensionid,regnum) {
+        var fields = {
+          "userid" : userid,
+          "carid": carid,
+          "vehicledimensionid": vehicledimensionid,
+          "regnum": regnum          
+        };
+        var serviceUrl = baseUrl + format(urls.updateUserVehicleDetails,userid,carid,vehicledimensionid,regnum);
+        var request = {
+          url: serviceUrl,
+          method: 'PUT',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      getUserVehicleDetailsById: function (uservehicleid) {
+        var serviceUrl = baseUrl + format(urls.getUserVehicleDetailsById, uservehicleid);
+        return makeGetCall(serviceUrl);
+      },
+
+      getListAllVehiclesByVehicleType: function (vehicletypeid) {
+        var serviceUrl = baseUrl + format(urls.getListAllVehiclesByVehicleType, vehicletypeid);
+        return makeGetCall(serviceUrl);
+      },
+
+      getVehicleDescByVehicleMake: function (vehiclemake) {
+        var serviceUrl = baseUrl + format(urls.getVehicleDescByVehicleMake, vehiclemake);
+        return makeGetCall(serviceUrl);
+      },
+
+      getVehicleDetailsById: function (vehicleid) {
+        var serviceUrl = baseUrl + format(urls.getVehicleDetailsById, vehicleid);
+        return makeGetCall(serviceUrl);
+      },
+
+      getVehicleMakeByVehicleType: function (vehicletype) {
+        var serviceUrl = baseUrl + format(urls.getVehicleMakeByVehicleType, vehicletype);
+        return makeGetCall(serviceUrl);
+      },
+
+      getVehiclesByVehicleType: function (vehicletypeid) {
+        var serviceUrl = baseUrl + format(urls.getVehiclesByVehicleType, vehicletypeid);
+        return makeGetCall(serviceUrl);
+      },
+
+      addVehicleType: function (newvehicletype) {
+        var fields = {
+          "newvehicletype": newvehicletype         
+        };
+        var serviceUrl = baseUrl + format(urls.addVehicleType,newvehicletype);
+        var request = {
+          url: serviceUrl,
+          method: 'POST',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      deleteVehicleType: function (vehicletypeid,uid,upass) {
+        var fields = {
+          "vehicletypeid": vehicletypeid,      
+          "uid": uid,
+          "upass": upass
+        };
+        var serviceUrl = baseUrl + format(urls.deleteVehicleType,vehicletypeid,uid,upass);
+        var request = {
+          url: serviceUrl,
+          method: 'DELETE',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      updateVehicleType: function (vehicletypeid,newvehicletype) {
+        var fields = {
+          "vehicletypeid" : vehicletypeid,
+          "newvehicletype": newvehicletype
+        };
+        var serviceUrl = baseUrl + format(urls.updateVehicleType,vehicletypeid,newvehicletype);
+        var request = {
+          url: serviceUrl,
+          method: 'PUT',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      getListAllVehicleTypes: function () {
+        var serviceUrl = baseUrl + format(urls.getListAllVehicleTypes);
+        return makeGetCall(serviceUrl);
+      },
+
+      getVehicleTypeById: function (id) {
+        var serviceUrl = baseUrl + format(urls.getVehicleTypeById, id);
+        return makeGetCall(serviceUrl);
+      },
+
+      addVendorDetails: function (userid,ownername,owneraddress,ownerlocationid) {
+        var fields = {
+          "userid": userid,
+          "ownername" : ownername,
+          "owneraddress" : owneraddress,          
+          "ownerlocationid": ownerlocationid
+        };
+        var serviceUrl = baseUrl + format(urls.addVendorDetails,userid,ownername,owneraddress,ownerlocationid);
+        var request = {
+          url: serviceUrl,
+          method: 'POST',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      deleteVendorDetails: function (vendorid,uid,upass) {
+        var fields = {
+          "vendorid": vendorid,
+          "uid": uid,
+          "upass": upass
+        };
+        var serviceUrl = baseUrl + format(urls.deleteVendorDetails,vendorid,uid,upass);
+        var request = {
+          url: serviceUrl,
+          method: 'DELETE',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      updateVendorDetails: function (vendorid,userid,ownername,owneraddress,ownerlocationid) {
+        var fields = {
+          "vendorid" : vendorid,
+          "userid": userid,
+          "ownername": ownername,
+          "owneraddress": owneraddress,
+          "ownerlocationid" : ownerlocationid
+        };
+        var serviceUrl = baseUrl + format(urls.updateVendorDetails,vendorid,userid,ownername,owneraddress,ownerlocationid);
+        var request = {
+          url: serviceUrl,
+          method: 'PUT',
+          data: fields
+        };
+        return $http(request).then(returnData);
+      },
+
+      getVendorDetailsById: function (vendorid) {
+        var serviceUrl = baseUrl + format(urls.getVendorDetailsById, vendorid);
+        return makeGetCall(serviceUrl);
+      },
+
+      getWorkdaysById: function (workdaysid) {
+        var serviceUrl = baseUrl + format(urls.getWorkdaysById, workdaysid);
+        return makeGetCall(serviceUrl);
+      }
+    };
+  });
 
 /*.factory('Chats', function() {
   // Might use a resource here that returns a JSON array
@@ -110,7 +721,7 @@ angular.module('starter.services', [])
       return null;
     }
   };
-})*/
+})
 
 .factory('Vendors', function() {
   // Might use a resource here that returns a JSON array
@@ -376,4 +987,4 @@ angular.module('starter.services', [])
       return null;
     }
   };
-});
+});*/

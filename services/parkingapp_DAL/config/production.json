@@ -1,7 +1,16 @@
 //PRODUCTION CONFIGURATION
-{
-	"debug": false,
-    "multipleStatements": true,
-    "url": "54.169.36.209",
-    "port": "7887"
+{	
+    "service": {
+        "url": "54.169.36.209",
+        "port": "7887"
+    },
+    "db": {
+        "connectionLimit"     : "100", //important
+        "host"                : "54.169.36.209",
+        "user"                : "parkingAppDAL",
+        "password"            : "ourpassword",
+        "database"            : "parkingapp",
+        "debug"               : "false",
+        "multipleStatements"  : "true"
+    }
 }

@@ -1,7 +1,7 @@
 var paymentMethodRepo = require('../data/payment_method');
 
 exports.addPaymentMethodDetails = function (req, res) {
-    console.log("Payment Method Service Contacted...");  
+    console.log("\nPayment Method Service Contacted...");  
     try {
         if(typeof req.params.method_desc == 'undefined' || typeof req.params.method_redirect_url == 'undefined') {
             return res.status(400).end();
@@ -32,7 +32,7 @@ exports.addPaymentMethodDetails = function (req, res) {
 };
 
 exports.deletePaymentMethodDetails = function (req, res) {
-    console.log("Payment Method Service Contacted...");  
+    console.log("\nPayment Method Service Contacted...");  
     try {
         if(typeof req.params.method_id == 'undefined' || typeof req.params.uid == 'undefined' || typeof req.params.upass == 'undefined') {
             return res.status(400).end();
@@ -63,7 +63,7 @@ exports.deletePaymentMethodDetails = function (req, res) {
 };
 
 exports.updatePaymentMethodDetails = function (req, res) {
-    console.log("Payment Method Service Contacted...");  
+    console.log("\nPayment Method Service Contacted...");  
     try {
         if(typeof req.params.paymentmethodid == 'undefined' || typeof req.params.methodname == 'undefined' || typeof req.params.methodurl == 'undefined') {
             return res.status(400).end();

@@ -1,7 +1,7 @@
 var vendorRepo = require('../data/vendor');
 
 exports.addVendorDetails = function (req, res) {
-    console.log("Vendor Service Contacted...");  
+    console.log("\nVendor Service Contacted...");  
     try {
         if(typeof req.params.userid == 'undefined' || typeof req.params.ownername == 'undefined' || typeof req.params.owneraddress == 'undefined' || typeof req.params.ownerlocationid == 'undefined') {
             return res.status(400).end();
@@ -33,7 +33,7 @@ exports.addVendorDetails = function (req, res) {
 };
 
 exports.deleteVendorDetails = function (req, res) {
-    console.log("Vendor Service Contacted...");  
+    console.log("\nVendor Service Contacted...");  
     try {
         if(typeof req.params.vendorid == 'undefined' || typeof req.params.uid == 'undefined' || typeof req.params.upass == 'undefined') {
             return res.status(400).end();
@@ -65,7 +65,7 @@ exports.deleteVendorDetails = function (req, res) {
 };
 
 exports.updateVendorDetails = function (req, res) {
-    console.log("Vendor Service Contacted...");  
+    console.log("\nVendor Service Contacted...");  
     try {
         if(typeof req.params.vendorid == 'undefined' || typeof req.params.userid == 'undefined' || typeof req.params.ownername == 'undefined' || typeof req.params.owneraddress == 'undefined' || typeof req.params.ownerlocationid == 'undefined') {
             return res.status(400).end();
@@ -97,7 +97,7 @@ exports.updateVendorDetails = function (req, res) {
 };
 
 exports.getVendorDetailsById = function (req, res) {
-    console.log("Vendor Service Contacted...");  
+    console.log("\nVendor Service Contacted...");  
     try {
         if(typeof req.params.vendorid == 'undefined') {
             return res.status(400).end();

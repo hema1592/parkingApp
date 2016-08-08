@@ -1,7 +1,7 @@
 var locationRepo = require('../data/location');
 
 exports.addLocation = function (req, res) {
-    console.log("Location Service Contacted...");  
+    console.log("\nLocation Service Contacted...");  
     try {
         if(!req.params.loc_address || !req.params.loc_area || !req.params.loc_landmark || !req.params.loc_city) {
             return res.status(400).end();
@@ -32,7 +32,7 @@ exports.addLocation = function (req, res) {
 };
 
 exports.deleteLocation = function (req, res) {
-    console.log("Location Service Contacted...");  
+    console.log("\nLocation Service Contacted...");  
     try {
         if(!req.params.locationid || !req.params.uid || !req.params.upass) {
             return res.status(400).end();
@@ -63,7 +63,7 @@ exports.deleteLocation = function (req, res) {
 };
 
 exports.updateLocation = function (req, res) {
-    console.log("Location Service Contacted...");  
+    console.log("\nLocation Service Contacted...");  
     try {
         if(!req.params.locationid || !req.params.loc_address || !req.params.loc_area || !req.params.loc_landmark || !req.params.loc_city) {
             return res.status(400).end();
@@ -94,7 +94,7 @@ exports.updateLocation = function (req, res) {
 };
 
 exports.getLocationById = function (req, res) {
-    console.log("Location Service Contacted...");  
+    console.log("\nLocation Service Contacted...");  
     try {
         if(!req.params.locationid) {
             return res.status(400).end();

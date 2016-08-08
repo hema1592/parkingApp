@@ -1,7 +1,7 @@
 var loginRepo = require('../data/login');
 
 exports.getLoginVerified = function (req, res) {
-    console.log("Login Service Contacted...");  
+    console.log("\nLogin Service Contacted...");  
     try {
         if(!req.params.user_id || !req.params.user_pass) {
             return res.status(400).end();

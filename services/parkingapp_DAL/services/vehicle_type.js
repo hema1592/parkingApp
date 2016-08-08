@@ -1,7 +1,7 @@
 var vehicletypeRepo = require('../data/vehicle_type');
 
 exports.addVehicleType = function (req, res) {
-    console.log("Vehicle Type Service Contacted...");  
+    console.log("\nVehicle Type Service Contacted...");  
     try {
         if(typeof req.params.newvehicletype == 'undefined') {
             return res.status(400).end();
@@ -33,7 +33,7 @@ exports.addVehicleType = function (req, res) {
 };
 
 exports.deleteVehicleType = function (req, res) {
-    console.log("Vehicle Type Service Contacted...");  
+    console.log("\nVehicle Type Service Contacted...");  
     try {
         if(typeof req.params.vehicletypeid == 'undefined' || typeof req.params.uid == 'undefined' || typeof req.params.upass == 'undefined') {
             return res.status(400).end();
@@ -65,7 +65,7 @@ exports.deleteVehicleType = function (req, res) {
 };
 
 exports.updateVehicleType = function (req, res) {
-    console.log("Vehicle Type Service Contacted...");  
+    console.log("\nVehicle Type Service Contacted...");  
     try {
         if(typeof req.params.vehicletypeid == 'undefined' || typeof req.params.newvehicletype == 'undefined') {
             return res.status(400).end();
@@ -97,7 +97,7 @@ exports.updateVehicleType = function (req, res) {
 };
 
 exports.getListAllVehicleTypes = function (req, res) {
-    console.log("Vehicle Type Service Contacted...");  
+    console.log("\nVehicle Type Service Contacted...");  
     try {
     
         console.log("Service Request Vehicle Type : all");
@@ -127,7 +127,7 @@ exports.getListAllVehicleTypes = function (req, res) {
 };
 
 exports.getVehicleTypeById = function (req, res) {
-    console.log("Vehicle Type Service Contacted...");  
+    console.log("\nVehicle Type Service Contacted...");  
     try {
         if(typeof req.params.vehicletypeid == 'undefined') {
             return res.status(400).end();

@@ -1,7 +1,7 @@
 var tariffRepo = require('../data/tariff');
 
 exports.addTariffDetails = function (req, res) {
-    console.log("Tariff Service Contacted...");  
+    console.log("\nTariff Service Contacted...");  
     try {
         if(typeof req.params.locationid == 'undefined' || typeof req.params.vehicletypeid == 'undefined' || typeof req.params.tariffamount == 'undefined') {
             return res.status(400).end();
@@ -33,7 +33,7 @@ exports.addTariffDetails = function (req, res) {
 };
 
 exports.deleteTariffDetails = function (req, res) {
-    console.log("Tariff Service Contacted...");  
+    console.log("\nTariff Service Contacted...");  
     try {
         if(typeof req.params.tariffid == 'undefined' || typeof req.params.uid == 'undefined' || typeof req.params.upass == 'undefined') {
             return res.status(400).end();
@@ -65,7 +65,7 @@ exports.deleteTariffDetails = function (req, res) {
 };
 
 exports.updateTariffDetails = function (req, res) {
-    console.log("Tariff Service Contacted...");  
+    console.log("\nTariff Service Contacted...");  
     try {
         if(typeof req.params.tariffid == 'undefined' || typeof req.params.locationid == 'undefined' || typeof req.params.vehicletypeid == 'undefined' || typeof req.params.tariffamount == 'undefined') {
             return res.status(400).end();
@@ -97,7 +97,7 @@ exports.updateTariffDetails = function (req, res) {
 };
 
 exports.getTariffDetailsById = function (req, res) {
-    console.log("Tariff Service Contacted...");  
+    console.log("\nTariff Service Contacted...");  
     try {
         if(typeof req.params.tariffid == 'undefined') {
             return res.status(400).end();

@@ -8,7 +8,7 @@ exports.addLocation = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to add location : ' + req.params.loc_address + " " + req.params.loc_area + " " + req.params.loc_landmark + " " + req.params.loc_city);
 
@@ -34,7 +34,7 @@ exports.deleteLocation = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to delete location : ' + req.params.locationid + " " + req.params.uid + " " + req.params.upass);
 
@@ -60,7 +60,7 @@ exports.updateLocation = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to update location : ' + req.params.locationid + " " + req.params.loc_address + " " + req.params.loc_area + " " + req.params.loc_landmark + " " + req.params.loc_city);
 
@@ -86,7 +86,7 @@ exports.getLocationById = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to get location info : ' + req.params.locationid);
 

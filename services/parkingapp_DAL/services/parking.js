@@ -1,7 +1,7 @@
 var parkingRepo = require('../data/parking');
 
 exports.addParkingLotDetails = function (req, res) {
-    console.log("Parking Service Contacted...");  
+    console.log("\nParking Service Contacted...");  
     try {
         if(typeof req.params.parking_name == 'undefined' || typeof req.params.parking_vendor_id == 'undefined' || typeof req.params.parking_loc_id == 'undefined' || typeof req.params.parking_tariff_id == 'undefined'|| typeof req.params.parking_slots == 'undefined' || typeof req.params.parking_from_time == 'undefined' || typeof req.params.parking_to_time == 'undefined' || typeof req.params.parking_workdays_id == 'undefined' || typeof req.params.parking_managed_status == 'undefined') {
             return res.status(400).end();
@@ -32,7 +32,7 @@ exports.addParkingLotDetails = function (req, res) {
 };
 
 exports.deleteParkingLotDetails = function (req, res) {
-    console.log("Parking Service Contacted...");  
+    console.log("\nParking Service Contacted...");  
     try {
         if(typeof req.params.parkingid == 'undefined' || typeof req.params.uid == 'undefined' || typeof req.params.upass == 'undefined') {
             return res.status(400).end();
@@ -63,7 +63,7 @@ exports.deleteParkingLotDetails = function (req, res) {
 };
 
 exports.updateParkingLotDetails = function (req, res) {
-    console.log("Parking Service Contacted...");  
+    console.log("\nParking Service Contacted...");  
     try {
         if(typeof req.params.parkingid == 'undefined' || typeof req.params.vendorid == 'undefined' || typeof req.params.parkingname == 'undefined' || typeof req.params.locationid == 'undefined'|| typeof req.params.tariffid == 'undefined' || typeof req.params.totalslots == 'undefined' || typeof req.params.fromtime == 'undefined' || typeof req.params.totime == 'undefined' || typeof req.params.workdaysid == 'undefined' || typeof req.params.managedstatus == 'undefined') {
             return res.status(400).end();
@@ -96,7 +96,7 @@ exports.updateParkingLotDetails = function (req, res) {
 };
 
 exports.getParkingLotDetailsById = function (req, res) {
-    console.log("Parking Service Contacted...");  
+    console.log("\nParking Service Contacted...");  
     try {
         if(typeof req.params.parkingid == 'undefined') {
             return res.status(400).end();

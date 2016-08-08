@@ -8,7 +8,7 @@ exports.addParkingLotDetails = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to add parking : ' + req.params.parking_name + req.params.parking_vendor_id + req.params.parking_loc_id + req.params.parking_tariff_id + req.params.parking_slots + req.params.parking_from_time + req.params.parking_to_time + req.params.parking_workdays_id + req.params.parking_managed_status);
 
@@ -34,7 +34,7 @@ exports.deleteParkingLotDetails = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to delete parking : ' + req.params.parkingid + " " + req.params.uid);
 
@@ -60,7 +60,7 @@ exports.updateParkingLotDetails = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to update parking : ' + req.params.parkingid + " " + req.params.vendorid + " " + req.params.parkingname + req.params.locationid + " " + req.params.tariffid + " " + req.params.totalslots + " " + req.params.fromtime + " " + req.params.totime + " " + req.params.workdaysid + " " + req.params.managedstatus);
 
@@ -86,7 +86,7 @@ exports.getParkingLotDetailsById = function(req, res) {
           res.json({"code" : 503, "status" : "Error connecting to database.. :("});
           return;
         }   
-        console.log('Connected as Thread Id: ' + connection.threadId);
+        console.log('\nConnected as Thread Id: ' + connection.threadId);
 
         console.log('Attempting to get parking lot info : ' + req.params.parkingid);
 

@@ -1,7 +1,7 @@
 var seasonalBookingRepo = require('../data/seasonal_booking');
 
 exports.addSeasonalBookingDetails = function (req, res) {
-    console.log("Seasonal Booking Service Contacted...");  
+    console.log("\nSeasonal Booking Service Contacted...");  
     try {
         if(typeof req.params.sp_parkingid == 'undefined' || typeof req.params.sp_vendorid == 'undefined' || typeof req.params.sp_carid == 'undefined' || typeof req.params.sp_bookingfrom == 'undefined' || typeof req.params.sp_bookingto == 'undefined' || typeof req.params.sp_workdaysid == 'undefined' || typeof req.params.sp_paymentmethodid == 'undefined' || typeof req.params.sp_paymentstatus == 'undefined' ) {
             return res.status(400).end();
@@ -32,7 +32,7 @@ exports.addSeasonalBookingDetails = function (req, res) {
 };
 
 exports.deleteSeasonalBookingDetails = function (req, res) {
-    console.log("Seasonal Booking Service Contacted...");  
+    console.log("\nSeasonal Booking Service Contacted...");  
     try {
         if(typeof req.params.bookingid == 'undefined' || typeof req.params.uid == 'undefined' || typeof req.params.upass == 'undefined') {
             return res.status(400).end();
@@ -63,7 +63,7 @@ exports.deleteSeasonalBookingDetails = function (req, res) {
 };
 
 exports.updateSeasonalBookingDetails = function (req, res) {
-    console.log("Seasonal Booking Service Contacted...");  
+    console.log("\nSeasonal Booking Service Contacted...");  
     try {
         if(typeof req.params.bookingid == 'undefined' || typeof req.params.parkingid == 'undefined' || typeof req.params.vendorid == 'undefined' || typeof req.params.usercarid == 'undefined' || typeof req.params.fromtime == 'undefined' || typeof req.params.totime == 'undefined' || typeof req.params.workdaysid == 'undefined' || typeof req.params.paymentmethodid == 'undefined' || typeof req.params.paymentstatus == 'undefined') {
             return res.status(400).end();

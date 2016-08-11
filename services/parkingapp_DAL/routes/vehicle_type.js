@@ -7,7 +7,7 @@ router.delete('/:vehicletypeid/:uid/:upass', service.deleteVehicleType);
 
 router.put('/:vehicletypeid/:newvehicletype', service.updateVehicleType);
 
-router.put('/all', service.getListAllVehicleTypes);
+router.get('/all', service.getListAllVehicleTypes);
 
 router.get('/:id', service.getVehicleTypeById);
 

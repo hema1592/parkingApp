@@ -100,7 +100,7 @@ exports.getListAllVehicleTypes = function (req, res) {
     console.log("\nVehicle Type Service Contacted...");  
     try {
     
-        console.log("Service Request Vehicle Type : all");
+        console.log("Service Request Vehicle Type : all ");
 
         vehicletypeRepo.getListAllVehicleTypes(req, function (err, result) {            
             if(err) {

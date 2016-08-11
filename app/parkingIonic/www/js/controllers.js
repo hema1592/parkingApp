@@ -20,7 +20,7 @@ angular.module('starter.controllers', [])
 
   .controller('HomeCtrl', function ($scope) {
   $scope.app = '';
-  google.maps.event.addDomListener(window, 'load', function () {
+  /*google.maps.event.addDomListener(window, 'load', function () {
     var myLatlng = new google.maps.LatLng(13.082680199999999, 80.2707184);
 
     var mapOptions = {
@@ -33,11 +33,6 @@ angular.module('starter.controllers', [])
 
     navigator.geolocation.getCurrentPosition(function (pos) {
       map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-      /*var myLocation = new google.maps.Marker({
-          position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-          map: map,
-          title: "My Location"
-      });*/
     });
 
     var icons = {
@@ -72,7 +67,7 @@ angular.module('starter.controllers', [])
     }
 
     $scope.map = map;
-  });
+  });*/
 })
 
   .controller('AddUserCtrl', function ($scope, parkingappservice) {
@@ -130,7 +125,7 @@ angular.module('starter.controllers', [])
     }
   })
 
-  .controller('AddParkingCtrl', function ($scope) {
+  .controller('AddParkingCtrl', function ($scope, parkingappservice) {
     /*Hours, Minutes, Vendors
     $scope.hours = Hours.all();
     $scope.mins = Minutes.all();
@@ -157,13 +152,44 @@ angular.module('starter.controllers', [])
     }*/
   })
 
-  .controller('AddTariffCtrl', function ($scope) {
-    /*VehicleTypes, Vendors
-    $scope.vehicleTypes = VehicleTypes.all();
-    $scope.vendors = Vendors.all();*/
+  .controller('AddTariffCtrl', function ($scope, parkingappservice) {
+    $scope.tariff = '';
+    //debugger;
+    $scope.tariff.vehicleTypes = '';
+    $scope.getListAllVehicleTypes = function () {
+      return parkingappservice.getListAllVehicleTypes()
+      .then( function(data) {
+        alert("Cntlr " + data);
+         return data;
+      })
+      .catch( function(error) {
+        if (error) {
+          alert("Error: Could not get values. ");
+        }
+      });
+      //alert("Vehicle Types: " + vehicleTypes);
+    }    
+    //$scope.tariff.vehicleTypes = getListAllVehicleTypes();
+    //alert("In Scope: " + $scope.tariff.vehicleTypes);
+    alert("Called function: " + JSON.stringify($scope.getListAllVehicleTypes()));
+    //var scope = getListAllVehicleTypes();
+    //alert("In Scope: " + JSON.stringify(scope));
+    
+    $scope.addNewTariff = function () {
+      alert(JSON.stringify($scope.tariff));
+      if ($scope.tariff.agencyname != undefined && $scope.tariff.ownername != undefined && $scope.tariff.streetname != undefined && $scope.tariff.area != undefined && $scope.tariff.city != undefined && $scope.tariff.code != undefined && $scope.tariff.landmark != undefined) {
+        return parkingappservice.addUserDetails($scope.tariff.username, $scope.tariff.phoneno,$scope.tariff.firstname,$scope.tariff.lastname,$scope.tariff.email,$scope.tariff.password,$scope.tariff.usertype).then(function () {
+          alert("Success...!");
+        })
+      }
+      else {
+        alert("Input Invalid!");
+      }
+
+    };
   })
 
-  .controller('RegisterVehicleCtrl', function ($scope) {
+  .controller('RegisterVehicleCtrl', function ($scope, parkingappservice) {
     /*, Vehicles, VehicleTypes, Users
     $scope.vehicleTypes = VehicleTypes.all();
     $scope.users = Users.all();

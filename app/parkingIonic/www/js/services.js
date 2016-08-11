@@ -76,18 +76,21 @@ angular.module('starter.services', [])
 
     function makeGetCall(serviceUrl) {
       return $http.get(serviceUrl)
-        .then(function (response) {
+        .then(function (response) {          
           response.data.url = serviceUrl;
           return response;
         }).then(returnData)
         .then(function (data) {
-          return data;
+          alert("Get Results : " + data);
+          var results = data;   
+          return results;
         });
     }
 
     function returnData(res) {
-      if(res.data) {
-        return res.data;      
+      if(res.data) {        
+        return JSON.stringify(res.data);      
+        //return res.data;
       }
       throw new Error('Return data error ... ');
     }
@@ -605,7 +608,7 @@ angular.module('starter.services', [])
       },
 
       getListAllVehicleTypes: function () {
-        var serviceUrl = baseUrl + format(urls.getListAllVehicleTypes);
+        var serviceUrl = baseUrl + format(urls.getListAllVehicleTypes);        
         return makeGetCall(serviceUrl);
       },
 

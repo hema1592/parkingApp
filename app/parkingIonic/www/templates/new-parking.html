@@ -22,13 +22,13 @@
             </label>  
             <div class="row padding">                       
                 <label class="item item-input item-select col-40 padding">
-                    <select>
+                    <select required>
                         <option name="open-hour" ng-repeat="hour in hours">{{hour.name}}</option>                
                     </select>
                 </label> 
                 <span class="col-10 padding">:</span>
                 <label class="item item-input item-select col-50 padding">            
-                    <select>
+                    <select required>
                         <option name="open-min" ng-repeat="min in mins">{{min.name}}</option>               
                     </select>
                 </label>
@@ -38,13 +38,13 @@
             </label>  
             <div class="row padding">                       
                 <label class="item item-input item-select col-40 padding">
-                    <select>
+                    <select required>
                         <option name="close-hour" ng-repeat="hour in hours">{{hour.name}}</option>                
                     </select>
                 </label> 
                 <span class="col-10 padding">:</span>                
                 <label class="item item-input item-select col-50 padding">            
-                    <select>
+                    <select required>
                         <option name="close-min" ng-repeat="min in mins">{{min.name}}</option>               
                     </select>
                 </label>

@@ -6,7 +6,7 @@
     },
     "db": {
         "connectionLimit"     : "100", //important
-        "host"                : "54.169.36.209",
+        "host"                : "localhost", //54.169.36.209
         "user"                : "parkingAppDAL",
         "password"            : "ourpassword",
         "database"            : "parkingapp",
